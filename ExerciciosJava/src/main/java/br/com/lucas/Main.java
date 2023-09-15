@@ -7,7 +7,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.executar();
+        PrincipalMenu principalMenu = new PrincipalMenu();
+        principalMenu.executarMenuPrincipal();
+
+        //Menu menu = new Menu();
+        //menu.executar();
     }
 }
