@@ -1,17 +1,19 @@
 package br.com.lucas;
 
+
+
 public abstract class Menu {
     protected int opcao;
     protected boolean continua;
-    public static void escrever(String mensagem){
+    public void escrever(String mensagem){
         InterfaceGraph g = new InterfaceGraph();
         g.write(mensagem);
     }
-    public static String receberTexto (String mensagem){
+    public String receberTexto (String mensagem){
         InterfaceGraph g = new InterfaceGraph();
         return  g.readText(mensagem);
     }
-    public static int receberInteiro (String mensagem){
+    public int receberInteiro (String mensagem){
         int ret = 0;
 
         try {
@@ -23,23 +25,27 @@ public abstract class Menu {
         } finally {
             return ret;
         }
-
     }
 
-    public static int receberInteiro2 (String mensagem) throws Exception {
-        int ret = 0;
+    public float receberFloat (String mensagem) {
+        float ret = 0;
         try {
-            ret = Integer.parseInt(receberTexto(mensagem));
-        } catch(Exception e) {
-            throw e;
+            InterfaceGraph g = new InterfaceGraph();
+            ret = Float.parseFloat(receberTexto(mensagem));
+
+        } catch (Exception e) {
+        escrever("Dado inválido!: " + e.getMessage());
+        }finally {
+            return ret;
         }
-        return ret;
     }
 
-    public static boolean confirmarSaida(){
+    public boolean confirmarSaida(){
         InterfaceGraph g = new InterfaceGraph();
 
         return !(g.readBoolean("Deseja Realmente Sair?"));
 
     }
+
+
 }
