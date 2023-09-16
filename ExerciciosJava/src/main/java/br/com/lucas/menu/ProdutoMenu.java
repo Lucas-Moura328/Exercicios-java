@@ -27,6 +27,8 @@ public class ProdutoMenu extends ModelsMenu {
                     System.out.println("Inicializou"); break;
                     case 2: incluir(getPosicao()); break;
                     case 3: listar(); break;
+                    case 4: pesquisar(); break;
+                    case 5: alterar(); break;
                     case 7: continua = false; break;
 
                 }
@@ -35,33 +37,43 @@ public class ProdutoMenu extends ModelsMenu {
 
         }
     }
-
-
-   @Override
-    public void incluir(int posicao) {
+    public Produto lerProduto() {
         try {
             int id = receberInteiro("Entre com id: ");
             String nome = receberTexto("Entre com o nome do produto");
             String descricao = receberTexto("Entre com a descrição do produto");
             float preco = receberFloat("Entre com o preco");
             boolean ativo = true;
+            return new Produto(id, nome, descricao, preco, ativo);
+        } catch (Exception e) {
 
-            Produto produto = new Produto(id, nome, descricao, preco, ativo);
+        }
+        return null;
+    }
+
+   @Override
+    public void incluir(int posicao) {
+        try {
+            Produto produto = lerProduto();
             produtos[posicao] = produto;
              this.setPosicao(incrementarPos(posicao));
         } catch (Exception e) {
             System.err.print(e.getMessage());
         }
     }
+
+    public void writeProduto(Produto p) {
+        graph.write("ID: " + p.getId()
+                + "\nNome do produto: " + p.getNome()
+                + "\nDescrição: " + p.getDescricao()
+                + "\nPreço: " + p.getPreco());
+    }
     @Override
     public void listar(){
         try {
             for (Produto p: produtos) {
                 if(p != null) {
-                    graph.write("ID: " + p.getId()
-                            + "\nNome do produto: " + p.getNome()
-                            + "\nDescrição: " + p.getDescricao()
-                            + "\nPreço: " + p.getPreco());
+                    writeProduto(p);
                 }
             }
         } catch(Exception e) {
@@ -70,19 +82,33 @@ public class ProdutoMenu extends ModelsMenu {
     }
     @Override
     public void alterar(){
-
+        int pos = encontrar();
+        produtos[pos] = lerProduto();
     }
     @Override
     public boolean excluir(){
         return false;
     }
     public void pesquisar(){
+        try {
+            int pos = encontrar();
+            writeProduto(produtos[pos]);
+        }catch (Exception e) {
 
+        }
     }
 
     @Override
     public int encontrar() {
-        return 0;
+        int pos = 0;
+        String criterio = receberTexto("entre com o Produto a pesquisar: ");
+        for(Produto p: produtos) {
+            if(p != null && p.getNome().equals(criterio)) {
+                return pos;
+            }
+            pos++;
+        }
+        return -1;
     }
 
 
