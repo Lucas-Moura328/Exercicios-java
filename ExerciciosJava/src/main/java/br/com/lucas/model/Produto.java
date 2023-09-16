@@ -1,7 +1,5 @@
 package br.com.lucas.model;
 
-import br.com.lucas.menu.ModelsMenu;
-
 public class Produto {
     private int id;
     private String nome;
@@ -23,6 +21,7 @@ public class Produto {
         setAtivo(ativo);
 
     }
+
 
     public boolean isAtivo() {
         return ativo;

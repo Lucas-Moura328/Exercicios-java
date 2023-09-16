@@ -1,4 +1,4 @@
-package br.com.lucas.menu;
+package br.com.lucas;
 
 import br.com.lucas.Menu;
 
@@ -20,7 +20,7 @@ public abstract class ModelsMenu extends Menu {
 
     public int inicializar() {
         this.posicao = 0;
-        return receberInteiro("Entre com o tamanho do vetor: ");
+        return Integer.parseInt(receberTexto("Entre com o tamanho do vetor: "));
     };
     public abstract void incluir(int posicao);
     public abstract void listar();

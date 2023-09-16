@@ -1,6 +1,6 @@
 package br.com.lucas.menu;
 
-import br.com.lucas.Menu;
+import br.com.lucas.ModelsMenu;
 
 public class UsuarioMenu extends ModelsMenu {
 

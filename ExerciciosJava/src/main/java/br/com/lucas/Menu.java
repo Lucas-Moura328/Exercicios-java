@@ -1,49 +1,36 @@
 package br.com.lucas;
 
 
+import br.com.lucas.InterfaceGraph;
 
 public abstract class Menu {
+    protected InterfaceGraph graph = new InterfaceGraph();
     protected int opcao;
     protected boolean continua;
     public void escrever(String mensagem){
-        InterfaceGraph g = new InterfaceGraph();
-        g.write(mensagem);
+        graph.write(mensagem);
     }
     public String receberTexto (String mensagem){
-        InterfaceGraph g = new InterfaceGraph();
-        return  g.readText(mensagem);
+        return  graph.readText(mensagem);
     }
-    public int receberInteiro (String mensagem){
-        int ret = 0;
-
-        try {
-            InterfaceGraph g = new InterfaceGraph();
-            ret = Integer.parseInt(receberTexto(mensagem));
-        } catch(Exception e) {
-            escrever("Digito Inválido!");
-            receberInteiro(mensagem);
-        } finally {
-            return ret;
-        }
+    public int receberInteiro (String mensagem) throws Exception {
+       try {
+           return graph.readInt(mensagem);
+       } catch (Exception e) {
+           throw e;
+       }
     }
 
-    public float receberFloat (String mensagem) {
-        float ret = 0;
+    public float receberFloat (String mensagem) throws Exception {
         try {
-            InterfaceGraph g = new InterfaceGraph();
-            ret = Float.parseFloat(receberTexto(mensagem));
-
+            return graph.readFloat(mensagem);
         } catch (Exception e) {
-        escrever("Dado inválido!: " + e.getMessage());
-        }finally {
-            return ret;
+            throw e;
         }
     }
 
     public boolean confirmarSaida(){
-        InterfaceGraph g = new InterfaceGraph();
-
-        return !(g.readBoolean("Deseja Realmente Sair?"));
+        return !(graph.readBoolean("Deseja Realmente Sair?"));
 
     }
 

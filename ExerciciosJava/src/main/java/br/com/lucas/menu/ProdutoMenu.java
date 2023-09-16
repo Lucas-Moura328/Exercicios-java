@@ -1,6 +1,6 @@
 package br.com.lucas.menu;
 
-import br.com.lucas.Menu;
+import br.com.lucas.ModelsMenu;
 import br.com.lucas.model.Produto;
 
 public class ProdutoMenu extends ModelsMenu {
@@ -26,6 +26,7 @@ public class ProdutoMenu extends ModelsMenu {
                     case 1: produtos = new Produto[inicializar()];
                     System.out.println("Inicializou"); break;
                     case 2: incluir(getPosicao()); break;
+                    case 3: listar(); break;
                     case 7: continua = false; break;
 
                 }
@@ -38,12 +39,13 @@ public class ProdutoMenu extends ModelsMenu {
 
    @Override
     public void incluir(int posicao) {
-        int id = receberInteiro("Entre com id: ");
-        String nome = receberTexto("Entre com o nome do produto");
-        String descricao = receberTexto("Entre com a descrição do produto");
-        float preco = receberFloat("Entre com o preco");
-        boolean ativo = true;
         try {
+            int id = receberInteiro("Entre com id: ");
+            String nome = receberTexto("Entre com o nome do produto");
+            String descricao = receberTexto("Entre com a descrição do produto");
+            float preco = receberFloat("Entre com o preco");
+            boolean ativo = true;
+
             Produto produto = new Produto(id, nome, descricao, preco, ativo);
             produtos[posicao] = produto;
              this.setPosicao(incrementarPos(posicao));
@@ -53,7 +55,18 @@ public class ProdutoMenu extends ModelsMenu {
     }
     @Override
     public void listar(){
+        try {
+            for (Produto p: produtos) {
+                if(p != null) {
+                    graph.write("ID: " + p.getId()
+                            + "\nNome do produto: " + p.getNome()
+                            + "\nDescrição: " + p.getDescricao()
+                            + "\nPreço: " + p.getPreco());
+                }
+            }
+        } catch(Exception e) {
 
+        }
     }
     @Override
     public void alterar(){

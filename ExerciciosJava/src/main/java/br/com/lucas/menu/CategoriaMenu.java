@@ -1,6 +1,6 @@
 package br.com.lucas.menu;
 
-import br.com.lucas.menu.ModelsMenu;
+import br.com.lucas.ModelsMenu;
 
 public class CategoriaMenu extends ModelsMenu {
     @Override
