@@ -35,9 +35,9 @@ public class PrincipalMenu extends Menu {
                             + "\n4-Venda"
                             + "\n5-Sair");
                 switch(opcao) {
-                    case 1: produtoMenu.executar(); break;
-                    case 2: break;
-                    case 3: break;
+                    case 1: produtoMenu.executar();   break;
+                    case 2: categoriaMenu.executar(); break;
+                    case 3: usuarioMenu.executar();   break;
                     case 4: break;
                     case 5: continua = confirmarSaida(); break;
                     default: escrever("Opção inválida jovem");break;

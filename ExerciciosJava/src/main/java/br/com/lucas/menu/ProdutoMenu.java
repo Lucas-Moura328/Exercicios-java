@@ -50,7 +50,7 @@ public class ProdutoMenu extends ModelsMenu {
         } catch (Exception e) {
 
         }
-        return null;
+        return lerProduto();
     }
 
    @Override
@@ -100,7 +100,6 @@ public class ProdutoMenu extends ModelsMenu {
                 }
 
             }
-
             escrever("O item foi excluído!");
             return true;
         } else {
@@ -131,7 +130,7 @@ public class ProdutoMenu extends ModelsMenu {
             }
             pos++;
         }
-        return -1;
+        return encontrar();
     }
 
 
