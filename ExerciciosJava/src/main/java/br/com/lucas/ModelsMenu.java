@@ -25,7 +25,7 @@ public abstract class ModelsMenu extends Menu {
     public abstract void incluir(int posicao);
     public abstract void listar();
     public abstract void alterar();
-    public abstract boolean excluir();
+    public abstract boolean excluir(int posicao);
     public abstract void pesquisar();
     public abstract int encontrar();
 

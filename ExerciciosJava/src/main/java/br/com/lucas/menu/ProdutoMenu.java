@@ -29,7 +29,9 @@ public class ProdutoMenu extends ModelsMenu {
                     case 3: listar(); break;
                     case 4: pesquisar(); break;
                     case 5: alterar(); break;
+                    case 6: excluir(getPosicao()); break;
                     case 7: continua = false; break;
+                    default: executar(); break;
 
                 }
             }while (continua);
@@ -86,9 +88,30 @@ public class ProdutoMenu extends ModelsMenu {
         produtos[pos] = lerProduto();
     }
     @Override
-    public boolean excluir(){
-        return false;
+    public boolean excluir(int posicao) {
+        int resultado = encontrar();
+        System.out.println("pos " + posicao);
+        if(resultado >= 0) {
+            for (int i = resultado; i < posicao - 1; i++) {
+                produtos[i] = produtos[i + 1];
+                if (i == posicao - 2) {
+                    produtos[posicao - 2] = null;
+
+                }
+
+            }
+
+            escrever("O item foi excluído!");
+            return true;
+        } else {
+            escrever("Nada encontrado!");
+            return false;
+        }
+
     }
+
+
+
     public void pesquisar(){
         try {
             int pos = encontrar();

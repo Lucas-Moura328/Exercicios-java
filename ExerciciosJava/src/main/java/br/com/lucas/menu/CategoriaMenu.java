@@ -16,7 +16,7 @@ public class CategoriaMenu extends ModelsMenu {
 
     }
     @Override
-    public boolean excluir(){
+    public boolean excluir(int posicao){
         return false;
     }
     public void pesquisar(){
