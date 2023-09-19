@@ -21,6 +21,14 @@ public abstract class Menu {
        }
     }
 
+    public long receberLongo (String mensagem) throws Exception {
+        try {
+            return graph.readLong(mensagem);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     public float receberFloat (String mensagem) throws Exception {
         try {
             return graph.readFloat(mensagem);

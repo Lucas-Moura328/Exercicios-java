@@ -44,7 +44,7 @@ public class UsuarioMenu extends ModelsMenu {
     public Usuario lerUsuario() {
         try {
             int id = receberInteiro("Entre com o id do usuario: ");
-            int cpf = receberInteiro("Entre com o CPF do Usuario: ");
+            long cpf = receberLongo("Entre com o CPF do Usuario: ");
             String nome = receberTexto("Entre com o nome do usuario: ");
             String email = receberTexto("Entre com E-mail: ");
             return new Usuario(id, nome, cpf, email);

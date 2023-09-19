@@ -21,6 +21,16 @@ public class InterfaceGraph {
         }
         return ret;
     }
+    public long readLong(String msg) throws Exception {
+        long ret = 0;
+        try {
+            ret = Long.valueOf(readText(msg));
+        } catch (Exception e) {
+            write("Digito inválido");
+            throw e;
+        }
+        return ret;
+    }
 
     public float readFloat(String msg) throws Exception {
         float ret = 0;

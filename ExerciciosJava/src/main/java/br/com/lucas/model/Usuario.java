@@ -3,16 +3,16 @@ package br.com.lucas.model;
 public class Usuario {
     private int id;
     private String nome;
-    private int cpf;
+    private long cpf;
     private String email;
 
-    public Usuario(int id, String nome, int cpf, String email) {
+    public Usuario(int id, String nome, long cpf, String email) {
         setId(id);
         setCpf(cpf);
         setNome(nome);
         setEmail(email);
     }
-    public Usuario(String nome, int cpf, String email) {
+    public Usuario(String nome, long cpf, String email) {
         setCpf(cpf);
         setNome(nome);
         setEmail(email);
@@ -34,11 +34,11 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 
